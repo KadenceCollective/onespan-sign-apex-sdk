@@ -227,12 +227,12 @@ public with sharing class ESignLiveSDK
      * Output: Documents JSON String
      * This method adds the documents in the existing package.
      */
-    public String createDocuments(String packageId,Map<String,Blob> documentBlobMap)
+    public String createDocuments(String packageId,ESignLiveAPIObjects.Document document, Map<String,Blob> documentBlobMap)
     {
         ESignLiveValidation.validate('Package Id', packageId);
         ESignLiveValidation.validate(documentBlobMap);
 
-        String response = createDocumentsWithBinaries(packageId,documentBlobMap);
+        String response = createDocumentWithBinariesAndFields(packageId,document,documentBlobMap);
         return response;
     }    
 
@@ -472,6 +472,46 @@ public with sharing class ESignLiveSDK
         String documentsResponse = helper.createDocumentsWithBinaries(packageId,multipartFormData);
         
         return documentsResponse;
+    }
+
+    /*
+     * Method Name: createDocumentWithBinariesAndFields
+     * Inputs: Package Id, ESignLiveAPIObjects.Document document, Document Map
+     * Output: Document Response string
+     * This method is a public method which is called from the createDocument method
+     * to create the documents within an existing package.
+     */
+    private String createDocumentWithBinariesAndFields(String packageId, ESignLiveAPIObjects.Document document, Map<String,Blob> documentMap)
+    {
+        Blob multipartFormData;
+
+        String secondHeader = '--' + BOUNDARY + '\nContent-Disposition: form-data; name="payload"';
+
+        String footer = '--' + BOUNDARY + '--';             
+
+        String secondHeaderEncoded = ESignLiveDocumentUtilities.encodeString(secondHeader);
+
+        List<String> encodedStrings = ESignLiveDocumentUtilities.encodeDocuments(documentMap,BOUNDARY,'file');
+
+        String fileNamesJSON = '';
+
+        for(String fileName : documentMap.keySet())
+        {              
+            fileNamesJSON = fileNamesJSON +'{ "name":"'+fileName+'" }' + ',';
+        }
+        
+        String headerPlusBodyEncoded = encodedStrings[0];
+        String footerEncoded = encodedStrings[1];
+        
+        String documentJSON = JSON.serialize(document);
+        documentJSON = ESignLiveJSONHelper.prepareOutboundJSON(documentJSON);        
+
+        String documentJSONEncoded = ESignLiveDocumentUtilities.encodeContent(documentJSON);
+
+        multipartFormData = EncodingUtil.base64Decode(headerPlusBodyEncoded+secondHeaderEncoded+documentJSONEncoded+footerEncoded);
+
+        String packageIdResponse = helper.createDocumentsWithBinaries(packageId, multipartFormData);
+        return packageIdResponse;
     }
 
     /**
