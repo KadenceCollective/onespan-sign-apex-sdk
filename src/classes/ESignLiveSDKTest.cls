@@ -347,7 +347,7 @@ public class ESignLiveSDKTest
         Test.stopTest();
         
         // Verify the result
-        //System.assertEquals(mockResponse, response);
+        System.assertEquals(mockResponse, response);
     }
     
     /**

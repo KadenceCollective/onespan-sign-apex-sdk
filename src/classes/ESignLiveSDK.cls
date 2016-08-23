@@ -449,36 +449,11 @@ public with sharing class ESignLiveSDK
         return null;
     }
 
-    /**
-     * Method Name: createDocumentsWithBinaries
-     * Inputs: Package Id, Document Map
-     * Output: Document Response string
-     * This method is a private method which is called from the createDocument method
-     * to create the documents within an existing package.
-     */
-    private String createDocumentsWithBinaries(String packageId, Map<String,Blob> documentMap)
-    {
-        Blob multipartFormData;
-
-        String newLineEncoded = ESignLiveDocumentUtilities.encodeString('');
-
-        List<String> encodedStrings = ESignLiveDocumentUtilities.encodeDocuments(documentMap,BOUNDARY,'files[]');
-
-        String headerPlusBodyEncoded = encodedStrings[0];
-        String footerEncoded = encodedStrings[1];
-
-        multipartFormData = EncodingUtil.base64Decode(headerPlusBodyEncoded+newLineEncoded+footerEncoded);
-
-        String documentsResponse = helper.createDocumentsWithBinaries(packageId,multipartFormData);
-        
-        return documentsResponse;
-    }
-
     /*
      * Method Name: createDocumentWithBinariesAndFields
      * Inputs: Package Id, ESignLiveAPIObjects.Document document, Document Map
      * Output: Document Response string
-     * This method is a public method which is called from the createDocument method
+     * This method is a private method which is called from the createDocument method
      * to create the documents within an existing package.
      */
     private String createDocumentWithBinariesAndFields(String packageId, ESignLiveAPIObjects.Document document, Map<String,Blob> documentMap)
