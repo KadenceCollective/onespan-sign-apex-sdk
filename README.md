@@ -21,7 +21,7 @@ After installing in your sandbox or developer org you'll need to configure the c
 
 **Name** = Main  
 **Endpoint Classic** = https://sandbox.e-signlive.com/api (SANDBOX) || https://apps.e-signlive.com/api (PROD)  
-**Endpoint New ** = https://sandbox.esignlive.com/api (SANDBOX) || https://apps.esignlive.com/api (PROD)  
+**Endpoint New** = https://sandbox.esignlive.com/api (SANDBOX) || https://apps.esignlive.com/api (PROD)  
 **API Key** = YOUR_API_KEY - can be obtained by going to the Account page in your eSignLive Sandbox.  For production accounts it should be emailed to you upon account creation.
 
 ## SDK Methods
