@@ -17,7 +17,7 @@ Alternatively, it can be installed as an unmanaged package:
 * [Production/Developer Sandbox](http://bit.ly/1Nk4s91)
 * [Test Sandbox](http://bit.ly/1NWRWfm)
 
-After installing in your sandbox or developer org you'll need to configure the connection settings by creating an entry in the eSignLive Connection Settings custom setting. You need to know if you are using eSignLive Classic or eSingLive New in order to set accordingly the Endpoint field in eSignLive Connection Settings custom setting.  
+After installing in your sandbox or developer org you'll need to configure the connection settings by creating an entry in the eSignLive Connection Settings custom setting. You need to know if you are using eSignLive Classic or eSingLive New in order to set accordingly the Endpoint field in eSignLive Connection Settings custom setting (possible values are next).
 
 **Name** = Main  
 **Endpoint** = https://sandbox.e-signlive.com/api (CLASSIC SANDBOX) || https://apps.e-signlive.com/api (CLASSIC PROD) ||  https://sandbox.esignlive.com/api (NEW SANDBOX) || https://apps.esignlive.com/api (NEW PROD)  
