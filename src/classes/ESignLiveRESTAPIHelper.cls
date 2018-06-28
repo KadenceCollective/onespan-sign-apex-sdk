@@ -888,6 +888,7 @@ public with sharing class ESignLiveRESTAPIHelper
         request.setMethod('GET');
         request.setHeader('Authorization', 'Basic ' + connectionSettings.API_Key__c);
         request.setHeader('Content-type', 'application/json');
+        request.setHeader('Accept', 'application/json');
 
         // Send Request
         HttpResponse response = (new Http()).send(request);
