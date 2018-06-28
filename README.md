@@ -17,10 +17,10 @@ Alternatively, it can be installed as an unmanaged package:
 * [Production/Developer Sandbox](	https://login.salesforce.com/packaging/installPackage.apexp?p0=04t15000000O8b0)
 * [Test Sandbox](	https://test.salesforce.com/packaging/installPackage.apexp?p0=04t15000000O8b0)
 
-After installing in your sandbox or developer org you'll need to configure the connection settings by creating an entry in the eSignLive Connection Settings custom setting.
+After installing in your sandbox or developer org you'll need to configure the connection settings by creating an entry in the eSignLive Connection Settings custom setting. You need to know if you are using eSignLive Classic or eSingLive New in order to set accordingly the Endpoint field in eSignLive Connection Settings custom setting (possible values are next).
 
 **Name** = Main  
-**Endpoint** = https://sandbox.e-signlive.com/api (SANDBOX) || https://apps.e-signlive.com/api (PROD)  
+**Endpoint** = https://sandbox.e-signlive.com/api (CLASSIC SANDBOX) || https://apps.e-signlive.com/api (CLASSIC PROD) ||  https://sandbox.esignlive.com/api (NEW SANDBOX) || https://apps.esignlive.com/api (NEW PROD)  
 **API Key** = YOUR_API_KEY - can be obtained by going to the Account page in your eSignLive Sandbox.  For production accounts it should be emailed to you upon account creation.
 
 ## SDK Methods
