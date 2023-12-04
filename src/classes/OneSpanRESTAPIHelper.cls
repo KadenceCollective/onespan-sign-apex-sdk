@@ -144,7 +144,7 @@ public with sharing class OneSpanRESTAPIHelper
     {
         // Send Request
         String resourceUrl = '/packages/' + packageId + '/roles/' + signerId + '/signingUrl';
-        HttpResponse response = doGet(resourceUrl);
+        HttpResponse response = doGetWithoutPrepareInboundJSON(resourceUrl);
 
         // Check response
         OneSpanAPIObjects.SigningUrl signingUrl;
@@ -902,6 +902,30 @@ public with sharing class OneSpanRESTAPIHelper
 
         return response;
     }
+
+    /**
+     * Utility method to handle GET callouts without Prepare Inbound JSON
+     */
+    private HttpResponse doGetWithoutPrepareInboundJSON(String resourceUrl)
+    {
+        // Build Request
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint(connectionSettings.Endpoint__c + resourceUrl);
+        request.setMethod('GET');
+        request.setHeader('Authorization', 'Basic ' + connectionSettings.API_Key__c);
+        request.setHeader('Content-type', 'application/json');
+
+        // Send Request
+        HttpResponse response = (new Http()).send(request);
+
+        if(response != null && (response.getHeader('Content-Type')).contains('json'))
+        {
+            response.setBody(response.getBody());
+        }
+
+        return response;
+    }
+
 
     /**
      * Utility method to handle DELETE callouts

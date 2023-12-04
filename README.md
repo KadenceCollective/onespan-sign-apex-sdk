@@ -12,7 +12,7 @@ Documentation for the SDK can be accessed [here](http://bit.ly/2uN6Rlz).
 For help, use OneSpan's [Developer Community](http://bit.ly/2uJz52e).
 
 ## Installation and Configuration
-The SDK can be installed using the <a href="https://githubsfdeploy.herokuapp.com?owner=KadenceCollective&repo=esignlive-apex-sdk">
+The SDK can be installed using the <a href="https://githubsfdeploy.herokuapp.com?owner=KadenceCollective&repo=onespan-sign-apex-sdk">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
 </a> button.
